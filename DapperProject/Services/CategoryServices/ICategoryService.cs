@@ -5,9 +5,9 @@ namespace DapperProject.Services.CategoryServices
     public interface ICategoryService
     {
         Task<List<ResultCategoryDto>> GetAllCategoriesAsync();
-        Task<List<ResultCategoryByIdDto>> GetCategoryByIdAsync(int id);
+        Task<ResultCategoryByIdDto> GetCategoryByIdAsync(int id);
         Task DeleteCategoryAsync(int id);
-        Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto);
+        Task UpdateCategoryAsync(UpdateCategoryDto categoryDto);
         Task CreateCategoryAsync(CreateCategoryDto categoryDto);
 
     }
