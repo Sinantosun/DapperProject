@@ -1,33 +1,52 @@
 ﻿@model List<ResultProductDto>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
-<h1>Ürünler</h1>
-
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <td>Ürün Adı</td>
-        <td>Fiyat</td>
-        <td>Kategori</td>
-        <td colspan="2">İşlemler</td>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <th>@item.ProductId</th>
-            <td>@item.ProductName</td>
-            <td>@item.ProductPrice</td>
-            <td>@item.CategoryName</td>
-            <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</a></td>
-            <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-outline-success"><i class="fa fa-edit"></i> Güncelle</a></td>
-        </tr>
-    }
-</table>
 <br />
-<a href="/Admin/Product/CreateProduct" class="btn btn-outline-primary"><i class="fa fa-pencil"></i> Yeni ürün ekle</a>
+<div class="col-lg-12 grid-margin stretch-card mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ürünler Alanı</h4>
+            <small class="card-description ">
+                Ürün ekleme silme veya güncelleme işlemlerini buradan gerçekleştirebilirsiniz.
+            </small>
+            <br />
+            <br />
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <td>Ürün Adı</td>
+                            <td>Fiyat</td>
+                            <td>Kategori</td>
+                            <th class="text-center" colspan="2">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.ProductId</th>
+                                <td>@item.ProductName</td>
+                                <td>@item.ProductPrice</td>
+                                <td>@item.CategoryName</td>
+                                <td class="text-center " style="width:40px"><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-outline-danger"><i class="la la-trash"></i>  Sil</a></td>
+                                <td class="text-center " style="width:40px"><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-outline-success"><i class="la la-edit"></i> Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Admin/Product/CreateProduct" class="btn btn-outline-primary"><i class="la la-pencil"></i> Yeni ürün ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 

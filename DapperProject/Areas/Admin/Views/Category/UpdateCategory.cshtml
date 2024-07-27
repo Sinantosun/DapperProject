@@ -1,16 +1,33 @@
 ﻿@model ResultCategoryByIdDto 
 @{
     ViewData["Title"] = "UpdateCategory";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
-<h1>Yeni kategori ekleme sayfası</h1>
+<br />
+<div class="col-lg-12 grid-margin stretch-card mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ürün güncelleme sayfası</h4>
+            <small class="card-description ">
+                Bu alanda kategori güncelleme işlemi gerçekleştirebilirsiniz.
+            </small>
+            <br />
+            <br />
+            <form method="post">
+                <label>Kategori adı</label>
+                <input type="hidden" asp-for="CategoryId" class="form-control" />
+                <input type="text" asp-for="CategoryName" class="form-control" />
+                <br />
+                <button class="btn btn-outline-primary">Kaydet</button>
+            </form>
 
-<form method="post">
-    <label>Kategori adı</label>
-    <input type="hidden" asp-for="CategoryId" class="form-control" />
-    <input type="text" asp-for="CategoryName" class="form-control" />
-    <br />
-    <button class="btn btn-outline-primary">Kaydet</button>
-</form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
