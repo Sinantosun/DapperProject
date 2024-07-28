@@ -24,7 +24,7 @@
                                                   </tr>`;
                 $.each(values, (index, value) => {
                     tableHtml += `<tr>
-                                                    <td>${value.Description}</td>
+                                                        <td>${value.Status == true ? "<s>" + value.Description + "</s>" : value.Description}</td>
                                                      <td><span class='badge ${(value.Status == true ? "badge-success" : "badge-danger")}'> ${(value.Status == true ? "Tamamlandı" : "Tamamlanmadı")}</span></td>
                                                      <td style='width:40px'><button type='button' onclick='changeToDoListStatus(${value.ToDoListId})' data-toggle='tooltip' title='Tamamlandı Olarak İşaretle' class='btn btn-link btn-simple-success'> <i class='la la-thumbs-up'></i></button></td>
                                                      <td style='width:40px'><button type='button' onclick='RemoveToDoList(${value.ToDoListId})' data-toggle='tooltip' title='Sil' class='btn btn-link btn-simple-danger'> <i class='la la-trash'></i></button></td>
@@ -211,13 +211,13 @@
             </div>
         </div>
         <div class="card-footer ">
-            <button type="button" id="ShowModal" class="btn btn-outline-primary mt-2 mb-2">
-                <i class="la la-plus"></i> Ekle
-            </button>
+          
 
 
             <div class="stats">
-                <i class="now-ui-icons loader_refresh spin"></i> Son Güncelleme : 25 mayıs pazartesi 14.30
+                <button type="button" id="ShowModal" class="btn btn-outline-primary mt-2 mb-2">
+                    <i class="la la-plus"></i> Ekle
+                </button>
             </div>
 
         </div>

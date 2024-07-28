@@ -1,0 +1,56 @@
+﻿
+@model List<ResultBigDataDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<br />
+<div class="col-lg-12 grid-margin stretch-card mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Büyük Veri Çalışma Alanı</h4>
+            <small class="card-description ">
+                Dapper İle veri büyük veri listeleme
+            </small>
+            <br />
+            <br />
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <td>Ad Soyad</td>
+                            <td>Kullanıcı Adı</td>
+                            <td>Ürün Adı</td>
+                            <td>Fiyatı</td>
+                            <td>Şehir</td>
+                            <td>Kasaba</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.ID</th>
+                                <th>@item.NAMESURNAME</th>
+                                <td>@item.USERNAME_</td>
+                                <td>@item.ITEMNAME</td>
+                                <td>@item.TOTALPRICE</td>
+                                <td>@item.CITY</td>
+                                <td>@item.TOWN</td>
+
+       
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

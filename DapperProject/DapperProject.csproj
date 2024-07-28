@@ -15,6 +15,8 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="BigData\DapperEfServices\EF\" />
+    <Folder Include="BigData\Dtos\EFDtos\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,3 +1,4 @@
+using DapperProject.BigData.DapperEfServices.Dapper;
 using DapperProject.Context;
 using DapperProject.Services.AboutServices;
 using DapperProject.Services.BookingServices;
@@ -19,6 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<DapperContext>();
+builder.Services.AddScoped<BigDataDapperContext>();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -35,6 +37,7 @@ builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<ITestimonialService, TestimonailService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IToDoListService, ToDoListService>();
+builder.Services.AddScoped<IBigDataDapperService, BigDataDapperService>();
 
 var app = builder.Build();
 
