@@ -1,6 +1,8 @@
-﻿using DapperProject.Services.ToDoListServices;
+﻿using DapperProject.Dtos.ToDoListDtos;
+using DapperProject.Services.ToDoListServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DapperProject.Areas.Admin.Controllers
 {
@@ -29,7 +31,7 @@ namespace DapperProject.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToDo(string description)
         {
-           await _toDoListService.CreateToDo(description);
+            await _toDoListService.CreateToDo(description);
             return Json("success");
         }
         [HttpPost]
@@ -43,6 +45,21 @@ namespace DapperProject.Areas.Admin.Controllers
         {
             await _toDoListService.RemoveTodoListAsync(id);
             return Json("success");
+        }
+
+        public async Task<IActionResult> GetByIdResult(int id)
+        {
+            var value = await _toDoListService.GetById(id);
+            var JsonData = JsonConvert.SerializeObject(value);
+            return Json(JsonData);
+
+        }
+
+        public async Task<IActionResult> UpdateToDo(UpdateToDoListDto updateToDoListDto)
+        {
+            await _toDoListService.UpdateToDo(updateToDoListDto);
+            return Json("success");
+
         }
     }
 

@@ -17,19 +17,19 @@
                 let values = jQuery.parseJSON(data);
 
                 let tableHtml = `<table class='table'>
-                                              <tr>
-                                                <th>Başlık</th>
-                                                <th>Durum</th>
-                                                <th colspan="3" class="text-center">İşlem</th>
-                                              </tr>`;
+                                                  <tr>
+                                                    <th>Başlık</th>
+                                                    <th>Durum</th>
+                                                    <th colspan="3" class="text-center">İşlem</th>
+                                                  </tr>`;
                 $.each(values, (index, value) => {
                     tableHtml += `<tr>
-                                                <td>${value.Description}</td>
-                                                 <td><span class='badge ${(value.Status == true ? "badge-success" : "badge-danger")}'> ${(value.Status == true ? "Tamamlandı" : "Tamamlanmadı")}</span></td>
-                                                         <td style='width:40px'><button type='button' onclick='changeToDoListStatus(${value.ToDoListId})' data-toggle='tooltip' title='Tamamlandı Olarak İşaretle' class='btn btn-link btn-simple-success'> <i class='la la-thumbs-up'></i></button></td>
-                                                         <td style='width:40px'><button type='button' onclick='RemoveToDoList(${value.ToDoListId})' data-toggle='tooltip' title='Sil' class='btn btn-link btn-simple-danger'> <i class='la la-trash'></i></button></td>
-                                                                 <td style='width:40px'><button type='button' onclick='ShowUpdateModal(${value.ToDoListId})' data-toggle='tooltip' title='Güncelle' class='btn btn-link btn-simple-primary'> <i class='la la-edit'></i></button></td>
-                                              </tr>`;
+                                                    <td>${value.Description}</td>
+                                                     <td><span class='badge ${(value.Status == true ? "badge-success" : "badge-danger")}'> ${(value.Status == true ? "Tamamlandı" : "Tamamlanmadı")}</span></td>
+                                                     <td style='width:40px'><button type='button' onclick='changeToDoListStatus(${value.ToDoListId})' data-toggle='tooltip' title='Tamamlandı Olarak İşaretle' class='btn btn-link btn-simple-success'> <i class='la la-thumbs-up'></i></button></td>
+                                                     <td style='width:40px'><button type='button' onclick='RemoveToDoList(${value.ToDoListId})' data-toggle='tooltip' title='Sil' class='btn btn-link btn-simple-danger'> <i class='la la-trash'></i></button></td>
+                                                     <td style='width:40px'><button type='button' onclick='ShowUpdateModal(${value.ToDoListId})' data-toggle='tooltip' title='Güncelle' class='btn btn-link btn-simple-primary'> <i class='la la-edit'></i></button></td>
+                                                  </tr>`;
                 });
                 tableHtml += `</table>`;
                 $(".tableAjax").html(tableHtml);
@@ -39,10 +39,6 @@
     }
 
     $(function () {
-        
-
-
-
 
         $("#ShowModal").click(function () {
 
@@ -81,12 +77,29 @@
             });
         })
 
-       
-         
+
+
     })
 
-    function ShowUpdateModal() {
-        $("#modal2").modal("show");
+    function ShowUpdateModal(ToDoListId) {
+
+        $.ajax({
+            url: '/Admin/DashBoard/GetByIdResult',
+            type: 'get',
+            data: { id: ToDoListId },
+            success: function (data) {
+                var jq = jQuery.parseJSON(data);
+
+                console.log(data);
+                $("#modal2").modal("show");
+
+                $("#UpdatetxtId").val(jq.ToDoListId);
+                $("#UpdatetxtTitle").val(jq.Description);
+                $("#UpdatetxtStatus").val(jq.Status);
+            }
+
+        })
+
     }
 
     function changeToDoListStatus(ToDoListId) {
@@ -143,6 +156,43 @@
             }
         })
     }
+
+    function UpdateTodo() {
+        let values = {
+            ToDoListId: $("#UpdatetxtId").val(),
+            Description: $("#UpdatetxtTitle").val(),
+            Status: $("#UpdatetxtStatus").val(),
+        }
+
+        $.ajax({
+            type: 'post',
+            url: '/Admin/DashBoard/UpdateToDo',
+            data: values,
+            success: function () {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "ToDoList durumu güncellendi"
+                });
+                $("#modal2").modal("hide");
+                GetToDoList();
+
+
+            }
+        })
+    }
+
+
 
 
     GetToDoList();
@@ -208,12 +258,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="text" id="txtId" placeholder="Başlık" class="form-control" />
-                <input type="text" id="txtTitle" placeholder="Başlık" class="form-control" />
+                <input type="hidden" id="UpdatetxtId" placeholder="Başlık" class="form-control" />
+                <input type="text" id="UpdatetxtTitle" placeholder="Başlık" class="form-control" />
+                <br />
+                <input type="text" id="UpdatetxtStatus" placeholder="Başlık" class="form-control" />
 
                 <br />
 
-                <button type="button" class="btn btn-success" id="AddUpdate">Güncelle</button>
+                <button type="button" class="btn btn-success" onclick="UpdateTodo()">Güncelle</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
             </div>
 

@@ -34,6 +34,15 @@ namespace DapperProject.Services.ToDoListServices
             await connection.ExecuteAsync(query, parametres);   
         }
 
+        public async Task<ResultToDoListByIdDto> GetById(int id)
+        {
+            var query = "select * from ToDoList where ToDoListId = @ToDoListId";
+            var parametres = new DynamicParameters();
+            parametres.Add("@ToDoListId", id);
+            var connection = _dapperContext.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<ResultToDoListByIdDto>(query, parametres);
+        }
+
         public async Task<List<ResultToDoListDto>> GetResultToDoListAsync()
         {
             var query = "select * from ToDoList";
@@ -49,6 +58,15 @@ namespace DapperProject.Services.ToDoListServices
             parametres.Add("@ToDoListId", id);
             var connection = _dapperContext.CreateConnection();
             await connection.ExecuteAsync(query,parametres);
+        }
+
+        public async Task UpdateToDo(UpdateToDoListDto updateToDoListDto)
+        {
+            var query = "update ToDoList set Description  = @Description , Status = @Status where ToDoListId = @ToDoListId";
+            var parametres = new DynamicParameters(updateToDoListDto);
+            var connection = _dapperContext.CreateConnection();
+            await connection.ExecuteAsync(query, parametres);
+
         }
     }
 }
