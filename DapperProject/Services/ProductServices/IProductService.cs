@@ -9,5 +9,8 @@ namespace DapperProject.Services.ProductServices
         Task DeleteProductAsync(int id);
         Task UpdateProductAsync(UpdateProductDto ProductDto);
         Task CreateProductAsync(CreateProductDto ProductDto);
+
+
+
     }
 }

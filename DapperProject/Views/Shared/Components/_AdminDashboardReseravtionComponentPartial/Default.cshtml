@@ -1,0 +1,41 @@
+﻿@model List<ResultBookingDto>
+@{
+    int count = 0;
+}
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header ">
+            <h4 class="card-title">Rezervasyonlar</h4>
+            <p class="card-category">Son 5 Rezervasyon</p>
+        </div>
+        <div class="card-body">
+            <table class="table   table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <td scope="col">Ad Soyad</td>
+                        <td scope="col">Tarih</td>
+                        <td scope="col">Telefon Numarası</td>
+                        <td scope="col">Kişi Sayısı</td>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th scope="col">@count</th>
+                            <td scope="col">@item.Name</td>
+                            <td scope="col">@item.Date</td>
+                            <td scope="col">@item.Phone</td>
+                            <td scope="col">@item.PersonCount</td>
+
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

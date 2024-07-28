@@ -15,7 +15,7 @@ namespace DapperProject.Services.TestimonailServices
 
         public async Task CreateTestimonialAsync(CreateTestimonialDto TestimonialDto)
         {
-            var query = "insert into Testimonials (ImageUrl,NameSurname,Location) values (@ImageUrl,@NameSurname,@Location)";
+            var query = "insert into Testimonials (ImageUrl,NameSurname,Location,Comment) values (@ImageUrl,@NameSurname,@Location,@Comment)";
             var parametres = new DynamicParameters(TestimonialDto);
             var connection = _dapperContext.CreateConnection();
             await connection.ExecuteAsync(query, parametres);
@@ -50,7 +50,7 @@ namespace DapperProject.Services.TestimonailServices
 
         public async Task UpdateTestimonialAsync(UpdateTestimonialDto TestimonialDto)
         {
-            var query = "update Testimonials set ImageUrl = @ImageUrl,NameSurname=@NameSurname,Location=@Location where TestimonialId=@TestimonialId";
+            var query = "update Testimonials set ImageUrl = @ImageUrl,NameSurname=@NameSurname,Location=@Location,Comment=@Comment where TestimonialId=@TestimonialId";
             var parametres = new DynamicParameters(TestimonialDto);
             var connection = _dapperContext.CreateConnection();
             await connection.ExecuteAsync(query, parametres);

@@ -1,5 +1,6 @@
 ﻿using DapperProject.Dtos.BookingDtos;
 
+
 namespace DapperProject.Services.BookingServices
 {
     public interface IBookingService
@@ -9,5 +10,7 @@ namespace DapperProject.Services.BookingServices
         Task DeleteBookingAsync(int id);
         Task UpdateBookingAsync(UpdateBookingDto BookingDto);
         Task CreateBookingAsync(CreateBookingDto BookingDto);
+
+        Task<List<ResultBookingDto>> GetFiveReseravationListAsync();
     }
 }

@@ -51,6 +51,14 @@ namespace DapperProject.Services.BookingServices
 
         }
 
+        public async Task<List<ResultBookingDto>> GetFiveReseravationListAsync()
+        {
+            var query = "select top 5  * from Reservations order by ReservationId desc";
+            var conneciton = _dapperContext.CreateConnection();
+            var result = await conneciton.QueryAsync<ResultBookingDto>(query);
+            return result.ToList();
+        }
+
         public async Task UpdateBookingAsync(UpdateBookingDto BookingDto)
         {
             var query = "update Reservations set Name = @Name,Email = @Email,Phone = @Phone,Date = @Date,PersonCount = @PersonCount,MessageContent = @MessageContent where ReservationId = @ReservationId";

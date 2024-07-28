@@ -1,0 +1,222 @@
+﻿
+
+
+
+<script src="~/Templates/Ready-Bootstrap-Dashboard-master/assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function GetToDoList() {
+        $.ajax({
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'get',
+            url: '/Admin/Dashboard/TodoList',
+            success: function (data) {
+                let values = jQuery.parseJSON(data);
+
+                let tableHtml = `<table class='table'>
+                                              <tr>
+                                                <th>Başlık</th>
+                                                <th>Durum</th>
+                                                <th colspan="3" class="text-center">İşlem</th>
+                                              </tr>`;
+                $.each(values, (index, value) => {
+                    tableHtml += `<tr>
+                                                <td>${value.Description}</td>
+                                                 <td><span class='badge ${(value.Status == true ? "badge-success" : "badge-danger")}'> ${(value.Status == true ? "Tamamlandı" : "Tamamlanmadı")}</span></td>
+                                                         <td style='width:40px'><button type='button' onclick='changeToDoListStatus(${value.ToDoListId})' data-toggle='tooltip' title='Tamamlandı Olarak İşaretle' class='btn btn-link btn-simple-success'> <i class='la la-thumbs-up'></i></button></td>
+                                                         <td style='width:40px'><button type='button' onclick='RemoveToDoList(${value.ToDoListId})' data-toggle='tooltip' title='Sil' class='btn btn-link btn-simple-danger'> <i class='la la-trash'></i></button></td>
+                                                                 <td style='width:40px'><button type='button' onclick='ShowUpdateModal(${value.ToDoListId})' data-toggle='tooltip' title='Güncelle' class='btn btn-link btn-simple-primary'> <i class='la la-edit'></i></button></td>
+                                              </tr>`;
+                });
+                tableHtml += `</table>`;
+                $(".tableAjax").html(tableHtml);
+
+            }
+        })
+    }
+
+    $(function () {
+        
+
+
+
+
+        $("#ShowModal").click(function () {
+
+            $("#modal").modal("show");
+        });
+
+        $("#AddBtn").click(function () {
+
+            var txt = $("#txtTitle").val();
+            $.ajax({
+                url: '/Admin/Dashboard/AddToDo',
+                type: 'post',
+                data: { description: txt },
+                success: function () {
+
+                    $("#modal").modal("hide");
+                    GetToDoList();
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "ToDoList Eklendi"
+                    });
+                }
+
+            });
+        })
+
+       
+         
+    })
+
+    function ShowUpdateModal() {
+        $("#modal2").modal("show");
+    }
+
+    function changeToDoListStatus(ToDoListId) {
+        $.ajax({
+            url: '/Admin/DashBoard/ChangeToDoListStatus',
+            type: 'post',
+            data: { id: ToDoListId },
+            success: function () {
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "ToDoList durumu güncellendi"
+                });
+
+                GetToDoList();
+            }
+        });
+    }
+
+    function RemoveToDoList(ToDoListId) {
+        $.ajax({
+            url: '/Admin/Dashboard/RemoveToDoList',
+            type: 'post',
+            data: { id: ToDoListId },
+            success: function () {
+                GetToDoList();
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "ToDoList Silindi"
+                });
+            }
+        })
+    }
+
+
+    GetToDoList();
+
+</script>
+
+<div class="col-md-6">
+    <div class="card card-tasks">
+        <div class="card-header ">
+            <h4 class="card-title">Yapılacaklar Listesi (Ajax)</h4>
+
+        </div>
+        <div class="card-body ">
+
+            <div class="table-full-width tableAjax">
+            </div>
+        </div>
+        <div class="card-footer ">
+            <button type="button" id="ShowModal" class="btn btn-outline-primary mt-2 mb-2">
+                <i class="la la-plus"></i> Ekle
+            </button>
+
+
+            <div class="stats">
+                <i class="now-ui-icons loader_refresh spin"></i> Son Güncelleme : 25 mayıs pazartesi 14.30
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni Alan Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="txtTitle" placeholder="Başlık" class="form-control" />
+
+                <br />
+
+                <button type="button" class="btn btn-success" id="AddBtn">Kaydet</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="modal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Alan Güncelle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="txtId" placeholder="Başlık" class="form-control" />
+                <input type="text" id="txtTitle" placeholder="Başlık" class="form-control" />
+
+                <br />
+
+                <button type="button" class="btn btn-success" id="AddUpdate">Güncelle</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+            </div>
+
+        </div>
+    </div>
+</div>
