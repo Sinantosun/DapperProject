@@ -6,5 +6,6 @@
         public string Title { get; set; }
         public string LinkedinURL { get; set; }
         public string InstagramURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

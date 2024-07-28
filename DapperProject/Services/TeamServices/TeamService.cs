@@ -15,7 +15,7 @@ namespace DapperProject.Services.TeamServices
 
         public async Task CreateTeamAsync(CreateTeamDto TeamDto)
         {
-            var query = "insert into teams (NameSurname,Title,LinkedinURL,InstagramURL) values (@NameSurname,@Title,@LinkedinURL,@InstagramURL)";
+            var query = "insert into teams (NameSurname,Title,LinkedinURL,InstagramURL,ImageUrl) values (@NameSurname,@Title,@LinkedinURL,@InstagramURL,@ImageUrl )";
             var parametres = new DynamicParameters(TeamDto);
             var connection = _context.CreateConnection();
             await connection.ExecuteAsync(query, parametres);
@@ -51,7 +51,7 @@ namespace DapperProject.Services.TeamServices
 
         public async Task UpdateTeamAsync(UpdateTeamDto TeamDto)
         {
-            var query = "update teams set NameSurname = @NameSurname,Title =@Title,LinkedinURL = @LinkedinURL,InstagramURL = @InstagramURL where TeamId = @TeamId";
+            var query = "update teams set NameSurname = @NameSurname,Title =@Title,LinkedinURL = @LinkedinURL,InstagramURL = @InstagramURL,ImageUrl=@ImageUrl where TeamId = @TeamId";
             var parametres = new DynamicParameters(TeamDto);
             var connection = _context.CreateConnection();
             await connection.ExecuteAsync(query, parametres);
