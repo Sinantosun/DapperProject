@@ -1,0 +1,67 @@
+﻿@model ResultMessageByIdDto
+@{
+    ViewData["Title"] = "MessageDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Mesajlar</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Mesaj Detay Sayfası</div>
+						
+					</div>
+					<div class="card-body">
+						<table class="table table-typo">
+							<tbody>
+								
+								
+								<tr>
+									<td>
+										<p>Gönderen :</p>
+
+									</td>
+									<td><span class="h5">@Model.NameSurname</span></td>
+								</tr>
+								<tr>
+									<td>
+										<p>Başlık :</p>
+
+									</td>
+									<td><span class="h5">@Model.Title</span></td>
+								</tr>
+								<tr>
+									<td>
+										<p>Email Adresi : </p>
+
+									</td>
+									<td><span class="h5">@Model.Email</span></td>
+								</tr>
+						
+							
+								<tr>
+									<td>
+										<p>Mesaj Detayı : </p>
+
+									</td>
+									<td>
+										<blockquote>
+											<p class="blockquote blockquote-primary">
+												@Model.MessageContent
+											</p>
+										</blockquote>
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

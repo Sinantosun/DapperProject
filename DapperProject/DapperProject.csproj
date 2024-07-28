@@ -15,22 +15,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Dtos\BookingDtos\" />
-    <Folder Include="Dtos\TeamDtos\" />
-    <Folder Include="Dtos\ContactDtos\" />
-    <Folder Include="Dtos\EventDtos\" />
-    <Folder Include="Dtos\MessageDtos\" />
-    <Folder Include="Dtos\TestimonailDtos\" />
-    <Folder Include="Dtos\SpecialDtos\" />
-    <Folder Include="Dtos\PhotoDtos\" />
-    <Folder Include="Services\TeamServices\" />
-    <Folder Include="Services\EventServices\" />
-    <Folder Include="Services\BookingServices\" />
-    <Folder Include="Services\MessageServices\" />
-    <Folder Include="Services\ContactServices\" />
-    <Folder Include="Services\TestimonailServices\" />
-    <Folder Include="Services\PhotoServices\" />
-    <Folder Include="Services\SpecialServices\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using DapperProject.Context;
+﻿using Dapper;
+using DapperProject.Context;
 using DapperProject.Dtos.AboutDtos;
 
 namespace DapperProject.Services.AboutServices
@@ -11,29 +12,48 @@ namespace DapperProject.Services.AboutServices
         {
             _dapperContext = dapperContext;
         }
-        public Task CreateAboutAsync(CreateAboutDto AboutDto)
+        public async Task CreateAboutAsync(CreateAboutDto AboutDto)
         {
-            throw new NotImplementedException();
+
+            var query = "insert into Abouts (Title,TopDescription,Property1,Property2,Property3,BottomDescription,ImageUrl) values (@Title,@TopDescription,@Property1,@Property2,@Property3,@BottomDescription,@ImageUrl)";
+            var parametres = new DynamicParameters(AboutDto);
+            var connection = _dapperContext.CreateConnection();
+            await connection.ExecuteAsync(query, parametres);
         }
 
-        public Task DeleteAboutAsync(int id)
+        public async Task DeleteAboutAsync(int id)
         {
-            throw new NotImplementedException();
+            var query = "delete from Abouts where AboutId = @id";
+            var parametres = new DynamicParameters();
+            parametres.Add("@id", id);
+            var connection = _dapperContext.CreateConnection();
+            await connection.ExecuteAsync(query, parametres);
         }
 
-        public Task<ResultAboutByIdDto> GetAboutByIdAsync(int id)
+        public async Task<ResultAboutByIdDto> GetAboutByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var query = "select * from Abouts where AboutId = @id";
+            var parametres = new DynamicParameters();
+            parametres.Add("@id", id);
+            var connection = _dapperContext.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<ResultAboutByIdDto>(query, parametres);
         }
 
-        public Task<List<ResultAboutDto>> GetAllAboutsAsync()
+        public async Task<List<ResultAboutDto>> GetAllAboutsAsync()
         {
-            throw new NotImplementedException();
+            var query = "select * from Abouts";
+
+            var connection = _dapperContext.CreateConnection();
+            var values = await connection.QueryAsync<ResultAboutDto>(query);
+            return values.ToList();
         }
 
-        public Task UpdateAboutAsync(UpdateAboutDto AboutDto)
+        public async Task UpdateAboutAsync(UpdateAboutDto AboutDto)
         {
-            throw new NotImplementedException();
+            var query = "update Abouts set Title = @Title , TopDescription = @TopDescription,Property1 = @Property1,Property2 = @Property2,Property3=@Property3,BottomDescription=@BottomDescription,ImageUrl=@ImageUrl  where @AboutId = @AboutId";
+            var parametres = new DynamicParameters(AboutDto);
+            var connection = _dapperContext.CreateConnection();
+            await connection.ExecuteAsync(query, parametres);
         }
     }
 }

@@ -1,0 +1,52 @@
+﻿
+@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<br />
+<div class="col-lg-12 grid-margin stretch-card mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hakkımızda Alanı</h4>
+            <small class="card-description ">
+                Hakkımızda ekleme silme veya güncelleme işlemlerini buradan gerçekleştirebilirsiniz.
+            </small>
+            <br />
+            <br />
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <td>Başlık</td>
+                            <td>Üst Açıklama</td>
+                            <td>1.Özellik</td>
+                            <td>2.Özellik</td>
+                            <td>3.Özellik</td>
+                            <td colspan="2">İşlemler</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.Title</th>
+                                <td>@item.TopDescription</td>
+                                <td>@item.Property1</td>
+                                <td>@item.Property2</td>
+                                <td>@item.Property3</td>
+
+                                <td><a href="/Admin/About/DeleteAbout/@item.AboutId" class="btn btn-outline-danger"><i class="la la-trash"></i> Sil</a></td>
+                                <td><a href="/Admin/About/UpdateAbout/@item.AboutId" class="btn btn-outline-success"><i class="la la-edit"></i> Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Admin/About/CreateAbout" class="btn btn-outline-primary"><i class="la la-pencil"></i> Yeni hakkımızda ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
