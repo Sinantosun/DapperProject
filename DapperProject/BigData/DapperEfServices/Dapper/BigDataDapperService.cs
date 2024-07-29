@@ -13,12 +13,12 @@ namespace DapperProject.BigData.DapperEfServices.Dapper
             _context = context;
         }
 
-        public async Task<List<ResultBigDataDto>> GetDataWithUsingDapperAsync()
+        public async Task<IEnumerable<ResultBigDataDto>> GetDataWithUsingDapperAsync()
         {
             var query = "select * from SALES";
             var connection = _context.CreateConnection();
             var values = await connection.QueryAsync<ResultBigDataDto>(query);
-            return values.ToList();
+            return values;
         }
     }
 }
