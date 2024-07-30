@@ -29,6 +29,7 @@ menüler içinde en pahalı yemeğin adı ve fiyatını, en uygun yemek fiyatın
 ![image02](https://github.com/user-attachments/assets/821e1099-8c06-41f7-a11a-1f5e42057113)
 
 Dapper kullanılarak 10 milyon MSSQL veri setinin listelendiği alan
+
 ![image03](https://github.com/user-attachments/assets/330957b8-6983-414c-b40a-337b41c56dc3)
 
 
