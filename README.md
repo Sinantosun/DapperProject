@@ -16,7 +16,8 @@ Bu nedenle Dapper, verilerin sık sık değiştiği ve istendiği senaryolarda i
 
 <h1>Admin Dashboard Alanı</h1>
 
-![image01](https://github.com/user-attachments/assets/2587996b-3027-4496-b77e-953f35e8fa61)
+![image06](https://github.com/user-attachments/assets/5f98dde3-0570-4af8-af62-86b9ae95add1)
+
 
 menüler içinde en pahalı yemeğin adı ve fiyatını, en uygun yemek fiyatını yemeklerin ortalama fiyatını, son yapılan 5 rezervasyonu ve bütün işlemler isteklerin ajax ile yapıldığı Yapılcaklar listesini görüntülemektedir.
 
