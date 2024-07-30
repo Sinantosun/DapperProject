@@ -22,7 +22,8 @@ menüler içinde en pahalı yemeğin adı ve fiyatını, en uygun yemek fiyatın
 
 <h1>Admin Ürünler Alanı</h1>
 
-![image06](https://github.com/user-attachments/assets/5f98dde3-0570-4af8-af62-86b9ae95add1)
+![prodcut](https://github.com/user-attachments/assets/2e5792c6-17ce-4bfa-98b2-88aa38288fe4)
+
 
 Ürün listesi burada yer almakta ve ilgili crud işlemleri burdan sağlanmaktadır.
 
