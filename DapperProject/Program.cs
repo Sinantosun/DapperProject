@@ -15,6 +15,7 @@ using DapperProject.Services.SpecialServices;
 using DapperProject.Services.TeamServices;
 using DapperProject.Services.TestimonailServices;
 using DapperProject.Services.ToDoListServices;
+using DapperProject.Services.WhyUsServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,7 @@ builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IToDoListService, ToDoListService>();
 builder.Services.AddScoped<IBigDataDapperService, BigDataDapperService>();
 builder.Services.AddScoped<IBigDataEFService, BigDataEFService>();
+builder.Services.AddScoped<IWhyUsService, WhyUsService>();
 
 var app = builder.Build();
 
@@ -62,7 +64,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Default}/{action=Index}/{id?}");
 
 app.UseEndpoints(endpoints =>
 {

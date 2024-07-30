@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DapperProject.Services.PhotoServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DapperProject.ViewComponents.DefaultComponents
 {
     public class _DefaultGalleryComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IPhotoService _photoService;
+
+        public _DefaultGalleryComponentPartial(IPhotoService photoService)
         {
-            return View();
+            _photoService = photoService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _photoService.GetAllPhotosAsync();
+            return View(values);
         }
     }
 }

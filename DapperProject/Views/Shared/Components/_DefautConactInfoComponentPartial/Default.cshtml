@@ -1,0 +1,32 @@
+﻿<div class="info">
+    @foreach (var item in Model)
+    {
+        <div class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Adress:</h4>
+            <p>@item.Location</p>
+        </div>
+
+        <div class="open-hours">
+            <i class="bi bi-clock"></i>
+            <h4>Açık Saatler:</h4>
+            <p>
+                @item.OpenHours
+            </p>
+        </div>
+
+        <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>@item.Email</p>
+        </div>
+
+        <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Telefon:</h4>
+            <p>@item.PhoneNumber </p>
+        </div>
+    }
+
+
+</div>

@@ -1,0 +1,48 @@
+﻿@model List<ResultWhyUsDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+
+<br />
+<div class="col-lg-12 grid-margin stretch-card mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Neden Bizi Seçmelisiniz Alanı</h4>
+            <small class="card-description ">
+                Bizi Seçmelisiniz ekleme silme veya güncelleme işlemlerini buradan gerçekleştirebilirsiniz.
+            </small>
+            <br />
+            <br />
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Başlık</td>
+                            <td>Açıklama</td>
+                            <td colspan="2">İşlemler</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.Description</td>
+
+                                <td><a href="/Admin/WhyChooseUs/DeleteWhyUs/@item.WhyUsId" class="btn btn-outline-danger"><i class="la la-trash"></i> Sil</a></td>
+                                <td><a href="/Admin/WhyChooseUs/UpdateWhyUs/@item.WhyUsId" class="btn btn-outline-success"><i class="la la-edit"></i> Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Admin/WhyChooseUs/CreateWhyUs" class="btn btn-outline-primary"><i class="la la-pencil"></i> Yeni alan ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>İletişim</h2>
+            <p>Bize Ulaşın</p>
+        </div>
+    </div>
+
+    <div class="container" data-aos="fade-up">
+
+        <div class="row mt-5">
+
+            <div class="col-lg-4">
+
+                @await Component.InvokeAsync("_DefautConactInfoComponentPartial")
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0">
+
+                @await Component.InvokeAsync("_DefaultMessageComponentPartial")
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
