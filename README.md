@@ -30,7 +30,8 @@ menüler içinde en pahalı yemeğin adı ve fiyatını, en uygun yemek fiyatın
 
 Dapper kullanılarak 10 milyon MSSQL veri setinin listelendiği alan
 
-![image06](https://github.com/user-attachments/assets/2bf76857-2b4b-4b02-b803-da633612edff)
+![image01](https://github.com/user-attachments/assets/24391921-94b3-4a42-a0b4-5641b876b797)
+
 
 Admin Spesyellerimiz Alanı
 
