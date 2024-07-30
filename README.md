@@ -1,4 +1,4 @@
-![default02](https://github.com/user-attachments/assets/1a208de8-21a4-4c57-8806-72e6e19f9aca)Dapper ORM kullanarak restorant projesi geliştirdik.<br> 
+Dapper ORM kullanarak restorant projesi geliştirdik.<br> 
 Ayrıca Omer Colakoglu hocamızın kaggle de yayınlanan MSSQL için 10 milyon veri seti olan 10Million Rows Turkish Market Sales Dataset(MSSQL) veri setini hem dapper orm hem entity framework orm kullanarak projeye dahil ettim.
 
   <h1> ☆ Dapper nedir ?  ☆ </h1>
