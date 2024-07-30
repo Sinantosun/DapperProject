@@ -3,12 +3,14 @@ Ayrıca Omer Colakoglu hocamızın kaggle de yayınlanan MSSQL için 10 milyon v
 
   <h1> ☆ Dapper nedir ?  ☆ </h1>
 
-Dapper, .NET dünyası ORM Aracıdır. Veritabanı işlemleri için herhangi bir .NET projesine eklenebilen bir NuGet kitaplığıdır. ORM (Object Relational Mapping), Nesne İlişkisel Eşleme anlamına gelir.
+📌 Dapper, .NET dünyası ORM Aracıdır. Veritabanı işlemleri için herhangi bir .NET projesine eklenebilen bir NuGet kitaplığıdır. ORM (Object Relational Mapping), Nesne İlişkisel Eşleme anlamına gelir.
 
-Neden Dapper Kullanmalıyız?
-Oldukça hafif ve yüksek performanslıdır.
-Veritabanı erişim kodunu büyük ölçüde azaltır.
-Herhangi bir veritabanı ile çalışabilir. SQL Server, Oracle, SQLite, MySQL, PoestgreSQL vb.
+☆ Neden Dapper Kullanmalıyız? ☆  
+<ul>
+  <li>Oldukça hafif ve yüksek performanslıdır.</li>
+  <li>Veritabanı erişim kodunu büyük ölçüde azaltır.</li>
+  <li>Herhangi bir veritabanı ile çalışabilir. SQL Server, Oracle, SQLite, MySQL, PoestgreSQL vb.</li>
+</ul>
 
 Dapper’ı Ne Zaman Kullanmalısınız?
 Dapper’ı kullanıp kullanmamaya karar verirken, birincil neden olarak performans akılda tutulmalıdır
