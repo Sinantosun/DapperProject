@@ -12,9 +12,9 @@ Ayrıca Omer Colakoglu hocamızın kaggle de yayınlanan MSSQL için 10 milyon v
   <li>Herhangi bir veritabanı ile çalışabilir. SQL Server, Oracle, SQLite, MySQL, PoestgreSQL vb.</li>
 </ul>
 
-Dapper’ı Ne Zaman Kullanmalısınız?
-Dapper’ı kullanıp kullanmamaya karar verirken, birincil neden olarak performans akılda tutulmalıdır
-Bu nedenle Dapper, verilerin sık sık değiştiği ve istendiği senaryolarda iyi bir seçimdir. 
+☆ Dapper’ı Ne Zaman Kullanmalısınız? ☆ 
+📌 Dapper’ı kullanıp kullanmamaya karar verirken, birincil neden olarak performans akılda tutulmalıdır <br>
+📌 Dapper, verilerin sık sık değiştiği ve istendiği senaryolarda iyi bir seçimdir. 
 
 <h1>Admin Dashboard Alanı</h1>
 
