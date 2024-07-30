@@ -27,7 +27,7 @@
                         <tr>
                             <th scope="col">@count</th>
                             <td scope="col">@item.Name</td>
-                            <td scope="col">@item.Date</td>
+                            <td scope="col">@(((DateTime)item.Date).ToString("f"))</td>
                             <td scope="col">@item.Phone</td>
                             <td scope="col">@item.PersonCount</td>
 
