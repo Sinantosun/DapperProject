@@ -1,7 +1,7 @@
 Dapper ORM kullanarak restorant projesi geliştirdik.<br> 
 Ayrıca Omer Colakoglu hocamızın kaggle de yayınlanan MSSQL için 10 milyon veri seti olan 10Million Rows Turkish Market Sales Dataset(MSSQL) veri setini hem dapper orm hem entity framework orm kullanarak projeye dahil ettim.
 
- ☆ <h1>Dapper nedir ? </h1> ☆
+  <h1> ☆ Dapper nedir ?  ☆ </h1>
 
 Dapper, .NET dünyası ORM Aracıdır. Veritabanı işlemleri için herhangi bir .NET projesine eklenebilen bir NuGet kitaplığıdır. ORM (Object Relational Mapping), Nesne İlişkisel Eşleme anlamına gelir.
 
