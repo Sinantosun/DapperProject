@@ -28,7 +28,8 @@ menüler içinde en pahalı yemeğin adı ve fiyatını, en uygun yemek fiyatın
 
 Ürün listesi burada yer almakta ve ilgili crud işlemleri burdan sağlanmaktadır.
 
-![image02](https://github.com/user-attachments/assets/821e1099-8c06-41f7-a11a-1f5e42057113)
+![dapper](https://github.com/user-attachments/assets/ac68433e-6212-4326-9bbb-a81361cad548)
+
 
 Dapper kullanılarak 10 milyon MSSQL veri setinin listelendiği alan
 
